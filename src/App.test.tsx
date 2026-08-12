@@ -5,7 +5,7 @@ import App from './App'
 describe('App', () => {
   it('renders every major section in document order', () => {
     render(<App />)
-    const expectedOrder = ['top', 'sobre', 'servicos', 'galeria', 'localizacao']
+    const expectedOrder = ['top', 'sobre', 'servicos', 'galeria', 'avaliacoes', 'localizacao']
     expectedOrder.forEach((id) => expect(document.getElementById(id)).not.toBeNull())
 
     const actualOrder = Array.from(document.querySelectorAll('[id]'))

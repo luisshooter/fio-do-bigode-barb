@@ -7,6 +7,7 @@ describe('content', () => {
       '#sobre',
       '#servicos',
       '#galeria',
+      '#avaliacoes',
       '#localizacao',
     ])
   })
