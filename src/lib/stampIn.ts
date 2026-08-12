@@ -6,6 +6,6 @@ export function stampInProps(prefersReducedMotion: boolean, delay = 0) {
     animate: prefersReducedMotion ? restingState : undefined,
     whileInView: prefersReducedMotion ? undefined : restingState,
     viewport: prefersReducedMotion ? undefined : { once: true, amount: 0.4 },
-    transition: { duration: 0.9, delay, ease: [0.34, 1.56, 0.64, 1] as const },
+    transition: { duration: 0.5, delay, ease: [0.34, 1.56, 0.64, 1] as const },
   }
 }
