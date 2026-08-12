@@ -7,14 +7,8 @@ import { buildWhatsAppLink } from '../lib/whatsapp'
 describe('Hero', () => {
   it('renders the shop name as the main heading', () => {
     render(<Hero />)
-    // AnimatedText splits the heading into per-word wrapper spans for the
-    // scroll reveal effect. Each wrapper's trailing space gets trimmed by
-    // RTL's accessible-name computation before siblings are joined, so the
-    // computed accessible name loses its spaces ("BarbeariaFiodoBigode").
-    // textContent is unaffected by that quirk and still reflects the real
-    // rendered text, so assert on that instead of the accessible name.
-    const heading = screen.getByRole('heading', { level: 1 })
-    expect(heading.textContent?.trim()).toBe(SITE_INFO.name)
+    const heading = screen.getByRole('heading', { level: 1, name: SITE_INFO.name })
+    expect(heading).toBeInTheDocument()
   })
 
   it('renders the real tagline', () => {

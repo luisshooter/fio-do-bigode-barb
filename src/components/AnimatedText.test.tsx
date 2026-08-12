@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { AnimatedText } from './AnimatedText'
 
 describe('AnimatedText', () => {
@@ -7,6 +7,11 @@ describe('AnimatedText', () => {
     const { container } = render(<AnimatedText text="Barbearia Fio do Bigode" as="h1" />)
     expect(container.textContent?.trim()).toBe('Barbearia Fio do Bigode')
     expect(container.querySelectorAll('span').length).toBeGreaterThan(0)
+  })
+
+  it('exposes the correct accessible name on the animated path, not the fragmented DOM text', () => {
+    render(<AnimatedText text="Barbearia Fio do Bigode" as="h1" />)
+    expect(screen.getByRole('heading', { name: 'Barbearia Fio do Bigode' })).toBeInTheDocument()
   })
 
   it('renders plain static text with no animation wrapper spans when reduced motion is preferred', () => {
