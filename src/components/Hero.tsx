@@ -39,7 +39,7 @@ export function Hero() {
 
       <motion.div
         aria-hidden="true"
-        {...fadeUpProps(prefersReducedMotion, 0.1)}
+        {...fadeUpProps(prefersReducedMotion, 0.2)}
         className={`mb-7 overflow-hidden rounded-full shadow-lg barber-pole ${
           prefersReducedMotion ? '' : 'barber-pole-spin'
         }`}
@@ -56,30 +56,30 @@ export function Hero() {
         }
         animate={{ opacity: 1, scale: 1, rotate: 0 }}
         transition={{
-          duration: 0.9,
-          delay: prefersReducedMotion ? 0 : 0.3,
+          duration: 1.2,
+          delay: prefersReducedMotion ? 0 : 0.6,
           ease: [0.34, 1.56, 0.64, 1],
         }}
       />
 
-      <motion.div {...fadeUpProps(prefersReducedMotion, 0.6)}>
+      <motion.div {...fadeUpProps(prefersReducedMotion, 1.0)}>
         <AnimatedText
           as="h1"
           text={SITE_INFO.name}
           className="font-display text-5xl font-black uppercase text-paper sm:text-6xl"
         />
       </motion.div>
-      <motion.p {...fadeUpProps(prefersReducedMotion, 0.8)} className="mt-4 max-w-xl text-lg text-paper/80">
+      <motion.p {...fadeUpProps(prefersReducedMotion, 1.4)} className="mt-4 max-w-xl text-lg text-paper/80">
         {TAGLINE}
       </motion.p>
       <motion.p
-        {...fadeUpProps(prefersReducedMotion, 0.95)}
+        {...fadeUpProps(prefersReducedMotion, 1.7)}
         className="mt-2 text-sm uppercase tracking-[0.15em] text-brass"
       >
         {SUBTAGLINE}
       </motion.p>
       <motion.a
-        {...fadeUpProps(prefersReducedMotion, 1.1)}
+        {...fadeUpProps(prefersReducedMotion, 2.0)}
         href={buildWhatsAppLink(WHATSAPP_GREETING)}
         target="_blank"
         rel="noreferrer"

@@ -6,6 +6,6 @@ export function fadeUpProps(prefersReducedMotion: boolean, delay = 0, distance =
     animate: prefersReducedMotion ? restingState : undefined,
     whileInView: prefersReducedMotion ? undefined : restingState,
     viewport: prefersReducedMotion ? undefined : { once: true, amount: 0.15 },
-    transition: { duration: 0.8, delay, ease: [0.25, 0.1, 0.25, 1] as const },
+    transition: { duration: 1.3, delay, ease: [0.25, 0.1, 0.25, 1] as const },
   }
 }
