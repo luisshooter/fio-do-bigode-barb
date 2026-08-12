@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { SeloReveal } from './SeloReveal'
 import { SITE_INFO, ABOUT_PHOTO } from '../data/content'
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
@@ -7,26 +8,34 @@ import { stampInProps } from '../lib/stampIn'
 export function Sobre() {
   const yearsActive = new Date().getFullYear() - SITE_INFO.foundedYear
   const prefersReducedMotion = usePrefersReducedMotion()
+  const photoRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: photoRef,
+    offset: ['start end', 'end start'],
+  })
+  const photoY = useTransform(scrollYProgress, [0, 1], [-24, 24])
 
   return (
     <section id="sobre" className="bg-ink px-6 py-24 text-paper grain-overlay">
       <SeloReveal />
       <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-2 md:items-center">
-        {ABOUT_PHOTO.src ? (
-          <img
-            src={ABOUT_PHOTO.src}
-            alt={ABOUT_PHOTO.alt}
-            className="aspect-[4/5] w-full -rotate-2 rounded-sm object-cover shadow-xl"
-          />
-        ) : (
-          <div
-            role="img"
-            aria-label={ABOUT_PHOTO.alt}
-            className="flex aspect-[4/5] w-full -rotate-2 items-center justify-center rounded-sm bg-paper/10 text-center text-xs uppercase tracking-wide text-paper/70 shadow-xl"
-          >
-            Foto em breve
-          </div>
-        )}
+        <motion.div ref={photoRef} style={prefersReducedMotion ? undefined : { y: photoY }}>
+          {ABOUT_PHOTO.src ? (
+            <img
+              src={ABOUT_PHOTO.src}
+              alt={ABOUT_PHOTO.alt}
+              className="aspect-[4/5] w-full -rotate-2 rounded-sm object-cover shadow-xl"
+            />
+          ) : (
+            <div
+              role="img"
+              aria-label={ABOUT_PHOTO.alt}
+              className="flex aspect-[4/5] w-full -rotate-2 items-center justify-center rounded-sm bg-paper/10 text-center text-xs uppercase tracking-wide text-paper/70 shadow-xl"
+            >
+              Foto em breve
+            </div>
+          )}
+        </motion.div>
         <div>
           <motion.h2
             className="font-display text-3xl font-black uppercase text-paper sm:text-4xl"
