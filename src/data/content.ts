@@ -40,14 +40,15 @@ export const SERVICES: Service[] = [
 export type GalleryItem = { alt: string; src?: string }
 
 export const ABOUT_PHOTO: GalleryItem = {
-  alt: 'Fachada da Barbearia Fio do Bigode',
+  alt: 'Barbeiro em atendimento na Barbearia Fio do Bigode',
+  src: '/gallery/sobre-ambiente.jpg',
 }
 
 export const GALLERY: GalleryItem[] = [
-  { alt: 'Corte clássico na tesoura' },
-  { alt: 'Barba feita na navalha' },
-  { alt: 'Ambiente da barbearia' },
+  { alt: 'Corte na tesoura em andamento', src: '/gallery/corte-tesoura.jpg' },
+  { alt: 'Barbeiro fazendo acabamento em cliente', src: '/gallery/barbeiro-atendimento.jpg' },
+  { alt: 'Ambiente da barbearia', src: '/gallery/ambiente-salao.jpg' },
   { alt: 'Detalhe do balcão old school' },
-  { alt: 'Cliente satisfeito com o corte' },
+  { alt: 'Cliente satisfeito com o corte', src: '/gallery/cliente-satisfeito.jpg' },
   { alt: 'Equipe Fio do Bigode' },
 ]

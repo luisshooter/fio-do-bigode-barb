@@ -9,8 +9,8 @@ describe('Sobre', () => {
     expect(screen.getByRole('heading', { name: `Desde ${SITE_INFO.foundedYear}` })).toBeInTheDocument()
   })
 
-  it('renders a labeled placeholder for the about photo (no real photo yet)', () => {
+  it('renders the real about photo', () => {
     render(<Sobre />)
-    expect(screen.getByLabelText(ABOUT_PHOTO.alt)).toBeInTheDocument()
+    expect(screen.getByAltText(ABOUT_PHOTO.alt)).toHaveAttribute('src', ABOUT_PHOTO.src)
   })
 })
