@@ -11,7 +11,8 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="grain-overlay relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-ink px-6 text-center"
+      className="grain-overlay relative flex min-h-screen flex-col items-center overflow-hidden bg-ink px-6 pb-16 text-center"
+      style={{ paddingTop: '120px' }}
     >
       <span
         aria-hidden="true"
