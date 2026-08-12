@@ -20,21 +20,29 @@ export function Sobre() {
       <SeloReveal />
       <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-2 md:items-center">
         <motion.div ref={photoRef} style={prefersReducedMotion ? undefined : { y: photoY }}>
-          {ABOUT_PHOTO.src ? (
-            <img
-              src={ABOUT_PHOTO.src}
-              alt={ABOUT_PHOTO.alt}
-              className="aspect-[4/5] w-full -rotate-2 rounded-sm object-cover shadow-xl"
-            />
-          ) : (
-            <div
-              role="img"
-              aria-label={ABOUT_PHOTO.alt}
-              className="flex aspect-[4/5] w-full -rotate-2 items-center justify-center rounded-sm bg-paper/10 text-center text-xs uppercase tracking-wide text-paper/70 shadow-xl"
-            >
-              Foto em breve
-            </div>
-          )}
+          <motion.div
+            initial={prefersReducedMotion ? { clipPath: 'inset(0% 0% 0% 0%)' } : { clipPath: 'inset(0% 0% 0% 100%)' }}
+            whileInView={prefersReducedMotion ? undefined : { clipPath: 'inset(0% 0% 0% 0%)' }}
+            animate={prefersReducedMotion ? { clipPath: 'inset(0% 0% 0% 0%)' } : undefined}
+            viewport={prefersReducedMotion ? undefined : { once: true, amount: 0.4 }}
+            transition={{ duration: 1, ease: [0.65, 0, 0.35, 1] }}
+          >
+            {ABOUT_PHOTO.src ? (
+              <img
+                src={ABOUT_PHOTO.src}
+                alt={ABOUT_PHOTO.alt}
+                className="aspect-[4/5] w-full -rotate-2 rounded-sm object-cover shadow-xl"
+              />
+            ) : (
+              <div
+                role="img"
+                aria-label={ABOUT_PHOTO.alt}
+                className="flex aspect-[4/5] w-full -rotate-2 items-center justify-center rounded-sm bg-paper/10 text-center text-xs uppercase tracking-wide text-paper/70 shadow-xl"
+              >
+                Foto em breve
+              </div>
+            )}
+          </motion.div>
         </motion.div>
         <div>
           <motion.h2

@@ -27,6 +27,12 @@ export function Hero() {
         style={prefersReducedMotion ? undefined : { opacity: contentOpacity, y: contentY }}
         className="flex flex-col items-center"
       >
+        <div
+          aria-hidden="true"
+          className={`mb-6 h-20 w-5 overflow-hidden rounded-full shadow-lg barber-pole ${
+            prefersReducedMotion ? '' : 'barber-pole-spin'
+          }`}
+        />
         <div className="relative mb-8 flex items-center justify-center">
           <motion.span
             aria-hidden="true"

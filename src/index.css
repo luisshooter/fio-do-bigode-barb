@@ -25,3 +25,29 @@ body {
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
+
+@keyframes barber-pole-spin {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 -60px;
+  }
+}
+
+.barber-pole {
+  background-image: repeating-linear-gradient(
+    45deg,
+    #b3282d 0px,
+    #b3282d 10px,
+    #f2e8d5 10px,
+    #f2e8d5 20px,
+    #c9a227 20px,
+    #c9a227 30px
+  );
+  background-size: 100% 200%;
+}
+
+.barber-pole-spin {
+  animation: barber-pole-spin 1.4s linear infinite;
+}
