@@ -27,4 +27,12 @@ describe('usePrefersReducedMotion', () => {
     const { result } = renderHook(() => usePrefersReducedMotion())
     expect(result.current).toBe(true)
   })
+
+  it('forces motion on via ?motion=on even when the media query matches', () => {
+    mockMatchMedia(true)
+    window.history.pushState({}, '', '/?motion=on')
+    const { result } = renderHook(() => usePrefersReducedMotion())
+    expect(result.current).toBe(false)
+    window.history.pushState({}, '', '/')
+  })
 })
