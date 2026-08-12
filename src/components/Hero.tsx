@@ -20,8 +20,8 @@ export function Hero() {
         style={{
           top: '-10%',
           right: '-6%',
-          width: '340px',
-          height: '340px',
+          width: 'clamp(160px, 45vw, 340px)',
+          height: 'clamp(160px, 45vw, 340px)',
           animation: prefersReducedMotion ? undefined : 'spin-slow 60s linear infinite',
         }}
       />
@@ -31,8 +31,8 @@ export function Hero() {
         style={{
           bottom: '-8%',
           left: '-8%',
-          width: '260px',
-          height: '260px',
+          width: 'clamp(120px, 34vw, 260px)',
+          height: 'clamp(120px, 34vw, 260px)',
           animation: prefersReducedMotion ? undefined : 'spin-slow 50s linear infinite reverse',
         }}
       />
