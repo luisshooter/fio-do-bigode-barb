@@ -11,12 +11,15 @@ export function Hero() {
       id="top"
       className="grain-overlay relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-ink px-6 text-center"
     >
-      <motion.div
-        aria-hidden="true"
-        className="mb-8 h-24 w-24 rounded-full border-2 border-brass"
-        animate={prefersReducedMotion ? undefined : { rotate: 360 }}
-        transition={prefersReducedMotion ? undefined : { duration: 40, repeat: Infinity, ease: 'linear' }}
-      />
+      <div className="relative mb-8 flex items-center justify-center">
+        <motion.span
+          aria-hidden="true"
+          className="absolute h-72 w-72 rounded-full border border-dotted border-brass/40"
+          animate={prefersReducedMotion ? undefined : { rotate: 360 }}
+          transition={prefersReducedMotion ? undefined : { duration: 60, repeat: Infinity, ease: 'linear' }}
+        />
+        <img src="/logo-transparent.png" alt="" className="relative h-56 w-auto" />
+      </div>
       <h1 className="font-display text-5xl font-black uppercase text-paper sm:text-6xl">
         {SITE_INFO.name}
       </h1>

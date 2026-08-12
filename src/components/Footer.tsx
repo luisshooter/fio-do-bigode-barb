@@ -5,7 +5,7 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-ink px-6 py-10 text-center text-paper/70">
+    <footer className="bg-ink px-6 py-10 text-center text-paper/70 grain-overlay">
       <img
         src="/logo-transparent.png"
         alt={SITE_INFO.name}

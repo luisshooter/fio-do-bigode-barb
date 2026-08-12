@@ -1,16 +1,24 @@
+import { motion } from 'framer-motion'
 import { SITE_INFO, WHATSAPP_GREETING } from '../data/content'
 import { buildWhatsAppLink } from '../lib/whatsapp'
 import { SeloReveal } from './SeloReveal'
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
+import { stampInProps } from '../lib/stampIn'
 
 export function Localizacao() {
+  const prefersReducedMotion = usePrefersReducedMotion()
+
   return (
-    <section id="localizacao" className="bg-ink px-6 py-24 text-paper">
+    <section id="localizacao" className="bg-ink px-6 py-24 text-paper grain-overlay">
       <SeloReveal />
       <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-2">
         <div>
-          <h2 className="font-display text-3xl font-black uppercase text-paper sm:text-4xl">
+          <motion.h2
+            className="font-display text-3xl font-black uppercase text-paper sm:text-4xl"
+            {...stampInProps(prefersReducedMotion)}
+          >
             Localização
-          </h2>
+          </motion.h2>
           <p className="mt-4">{SITE_INFO.address}</p>
           <p className="mt-2 text-paper/70">{SITE_INFO.hoursPlaceholder}</p>
           <div className="mt-6 flex flex-col gap-2">

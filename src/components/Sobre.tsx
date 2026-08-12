@@ -1,11 +1,15 @@
+import { motion } from 'framer-motion'
 import { SeloReveal } from './SeloReveal'
 import { SITE_INFO, ABOUT_PHOTO } from '../data/content'
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
+import { stampInProps } from '../lib/stampIn'
 
 export function Sobre() {
   const yearsActive = new Date().getFullYear() - SITE_INFO.foundedYear
+  const prefersReducedMotion = usePrefersReducedMotion()
 
   return (
-    <section id="sobre" className="bg-ink px-6 py-24 text-paper">
+    <section id="sobre" className="bg-ink px-6 py-24 text-paper grain-overlay">
       <SeloReveal />
       <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-2 md:items-center">
         {ABOUT_PHOTO.src ? (
@@ -24,9 +28,12 @@ export function Sobre() {
           </div>
         )}
         <div>
-          <h2 className="font-display text-3xl font-black uppercase text-paper sm:text-4xl">
+          <motion.h2
+            className="font-display text-3xl font-black uppercase text-paper sm:text-4xl"
+            {...stampInProps(prefersReducedMotion)}
+          >
             Desde {SITE_INFO.foundedYear}
-          </h2>
+          </motion.h2>
           <p className="mt-4 text-paper/80">
             Há {yearsActive} anos cuidando do visual de Pato Branco com técnica clássica de navalha,
             tesoura e muita conversa de barbearia.

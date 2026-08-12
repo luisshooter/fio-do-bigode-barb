@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
+import { stampInProps } from '../lib/stampIn'
 
 export function SeloReveal() {
   const prefersReducedMotion = usePrefersReducedMotion()
@@ -13,11 +14,7 @@ export function SeloReveal() {
         height="40"
         viewBox="0 0 40 40"
         className="text-brass"
-        initial={prefersReducedMotion ? { scale: 1, rotate: 0, opacity: 1 } : { scale: 1.15, rotate: -4, opacity: 0 }}
-        animate={prefersReducedMotion ? { scale: 1, rotate: 0, opacity: 1 } : undefined}
-        whileInView={prefersReducedMotion ? undefined : { scale: 1, rotate: 0, opacity: 1 }}
-        viewport={prefersReducedMotion ? undefined : { once: true, amount: 0.6 }}
-        transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
+        {...stampInProps(prefersReducedMotion)}
       >
         <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" strokeWidth="1.5" />
         <line x1="10" y1="10" x2="30" y2="30" stroke="currentColor" strokeWidth="1.5" />
