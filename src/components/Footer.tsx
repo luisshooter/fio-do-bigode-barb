@@ -1,11 +1,18 @@
+import { motion } from 'framer-motion'
 import { SITE_INFO, WHATSAPP_GREETING } from '../data/content'
 import { buildWhatsAppLink } from '../lib/whatsapp'
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
+import { fadeUpProps } from '../lib/fadeUp'
 
 export function Footer() {
   const year = new Date().getFullYear()
+  const prefersReducedMotion = usePrefersReducedMotion()
 
   return (
-    <footer className="bg-ink px-6 py-10 text-center text-paper/70 grain-overlay">
+    <motion.footer
+      {...fadeUpProps(prefersReducedMotion, 0, 0)}
+      className="bg-ink px-6 py-10 text-center text-paper/70 grain-overlay"
+    >
       <img
         src="/logo-transparent.png"
         alt={SITE_INFO.name}
@@ -27,6 +34,6 @@ export function Footer() {
       <p className="mt-4 text-xs">
         © {year} {SITE_INFO.name}. Todos os direitos reservados.
       </p>
-    </footer>
+    </motion.footer>
   )
 }

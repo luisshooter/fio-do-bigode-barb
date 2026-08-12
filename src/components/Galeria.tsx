@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { GALLERY } from '../data/content'
 import { SeloReveal } from './SeloReveal'
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
-import { stampInProps } from '../lib/stampIn'
+import { fadeUpProps } from '../lib/fadeUp'
 
 export function Galeria() {
   const prefersReducedMotion = usePrefersReducedMotion()
@@ -12,7 +12,7 @@ export function Galeria() {
       <SeloReveal />
       <motion.h2
         className="text-center font-display text-3xl font-black uppercase text-paper sm:text-4xl"
-        {...stampInProps(prefersReducedMotion)}
+        {...fadeUpProps(prefersReducedMotion)}
       >
         Galeria
       </motion.h2>
@@ -20,11 +20,7 @@ export function Galeria() {
         {GALLERY.map((item, index) => (
           <motion.div
             key={item.alt}
-            initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }}
-            animate={prefersReducedMotion ? { opacity: 1 } : undefined}
-            whileInView={prefersReducedMotion ? undefined : { opacity: 1 }}
-            viewport={prefersReducedMotion ? undefined : { once: true, amount: 0.3 }}
-            transition={{ duration: 0.4, delay: index * 0.05 }}
+            {...fadeUpProps(prefersReducedMotion, index * 0.05, 28)}
           >
             <div
               className={`aspect-square rounded-sm bg-paper/10 p-2 shadow-lg transition-transform duration-300 hover:rotate-0 hover:scale-105 ${

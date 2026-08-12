@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { SeloReveal } from './SeloReveal'
 import { SITE_INFO, ABOUT_PHOTO } from '../data/content'
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
-import { stampInProps } from '../lib/stampIn'
+import { fadeUpProps } from '../lib/fadeUp'
 
 export function Sobre() {
   const yearsActive = new Date().getFullYear() - SITE_INFO.foundedYear
@@ -21,9 +21,17 @@ export function Sobre() {
       <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-2 md:items-center">
         <motion.div ref={photoRef} style={prefersReducedMotion ? undefined : { y: photoY }}>
           <motion.div
-            initial={prefersReducedMotion ? { clipPath: 'inset(0% 0% 0% 0%)' } : { clipPath: 'inset(0% 0% 0% 100%)' }}
-            whileInView={prefersReducedMotion ? undefined : { clipPath: 'inset(0% 0% 0% 0%)' }}
-            animate={prefersReducedMotion ? { clipPath: 'inset(0% 0% 0% 0%)' } : undefined}
+            initial={
+              prefersReducedMotion
+                ? { clipPath: 'inset(0% 0% 0% 0%)', opacity: 1, y: 0 }
+                : { clipPath: 'inset(0% 0% 0% 100%)', opacity: 0, y: 28 }
+            }
+            whileInView={
+              prefersReducedMotion ? undefined : { clipPath: 'inset(0% 0% 0% 0%)', opacity: 1, y: 0 }
+            }
+            animate={
+              prefersReducedMotion ? { clipPath: 'inset(0% 0% 0% 0%)', opacity: 1, y: 0 } : undefined
+            }
             viewport={prefersReducedMotion ? undefined : { once: true, amount: 0.4 }}
             transition={{ duration: 1, ease: [0.65, 0, 0.35, 1] }}
           >
@@ -44,18 +52,15 @@ export function Sobre() {
             )}
           </motion.div>
         </motion.div>
-        <div>
-          <motion.h2
-            className="font-display text-3xl font-black uppercase text-paper sm:text-4xl"
-            {...stampInProps(prefersReducedMotion)}
-          >
+        <motion.div {...fadeUpProps(prefersReducedMotion)}>
+          <h2 className="font-display text-3xl font-black uppercase text-paper sm:text-4xl">
             Desde {SITE_INFO.foundedYear}
-          </motion.h2>
+          </h2>
           <p className="mt-4 text-paper/80">
             Há {yearsActive} anos cuidando do visual de Pato Branco com técnica clássica de navalha,
             tesoura e muita conversa de barbearia.
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

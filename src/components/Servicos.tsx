@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
 import { SeloReveal } from './SeloReveal'
-import { SERVICES } from '../data/content'
+import { SERVICES, WHATSAPP_GREETING } from '../data/content'
+import { buildWhatsAppLink } from '../lib/whatsapp'
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
-import { stampInProps } from '../lib/stampIn'
+import { fadeUpProps } from '../lib/fadeUp'
 
 export function Servicos() {
   const prefersReducedMotion = usePrefersReducedMotion()
@@ -12,32 +13,36 @@ export function Servicos() {
       <SeloReveal />
       <div className="mx-auto max-w-2xl">
         <motion.h2
+          {...fadeUpProps(prefersReducedMotion)}
           className="text-center font-display text-3xl font-black uppercase text-paper sm:text-4xl"
-          {...stampInProps(prefersReducedMotion)}
         >
           Serviços
         </motion.h2>
-        <ul className="mt-10 space-y-5">
-          {SERVICES.map((service, index) => (
-            <motion.li
-              key={service.name}
-              className="flex items-baseline gap-3"
-              {...stampInProps(prefersReducedMotion, index * 0.06)}
-            >
+        <motion.p
+          {...fadeUpProps(prefersReducedMotion, 0.1)}
+          className="mt-3 text-center text-sm uppercase tracking-wide text-paper/70"
+        >
+          Tabela na cadeira — valor você confirma na hora
+        </motion.p>
+        <motion.ul {...fadeUpProps(prefersReducedMotion, 0.2)} className="mt-10 space-y-5">
+          {SERVICES.map((service) => (
+            <li key={service.name} className="flex items-baseline gap-3">
               <span className="whitespace-nowrap">{service.name}</span>
-              <motion.span
-                aria-hidden="true"
-                className="h-px flex-1 border-b border-dotted border-brass/40"
-                initial={prefersReducedMotion ? { width: '100%' } : { width: '0%' }}
-                animate={prefersReducedMotion ? { width: '100%' } : undefined}
-                whileInView={prefersReducedMotion ? undefined : { width: '100%' }}
-                viewport={prefersReducedMotion ? undefined : { once: true, amount: 0.8 }}
-                transition={{ duration: 0.6, delay: index * 0.06 + 0.2, ease: 'easeOut' }}
-              />
+              <span aria-hidden="true" className="h-px flex-1 border-b border-dotted border-brass/40" />
               <span className="whitespace-nowrap font-semibold text-brass">{service.price}</span>
-            </motion.li>
+            </li>
           ))}
-        </ul>
+        </motion.ul>
+        <motion.div {...fadeUpProps(prefersReducedMotion, 0.3)} className="mt-8 flex justify-center">
+          <a
+            href={buildWhatsAppLink(WHATSAPP_GREETING)}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-sm border border-brass px-8 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-brass transition-colors hover:bg-brass hover:text-ink"
+          >
+            Chama no zap e marca
+          </a>
+        </motion.div>
       </div>
     </section>
   )

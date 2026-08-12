@@ -21,6 +21,8 @@ export const SITE_INFO = {
 
 export const TAGLINE = 'Cuidar do seu estilo é o nosso negócio.'
 
+export const SUBTAGLINE = 'Navalha, tesoura e conversa boa — desde 2015'
+
 export const WHATSAPP_GREETING = 'Olá! Vim pelo site e quero agendar um horário na Fio do Bigode.'
 
 export type Service = { name: string; price: string }

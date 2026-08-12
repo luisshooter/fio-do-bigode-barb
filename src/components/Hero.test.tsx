@@ -34,8 +34,8 @@ describe('Hero', () => {
       dispatchEvent: vi.fn(),
     })) as unknown as typeof window.matchMedia
 
-    const { container } = render(<Hero />)
-    const badge = container.querySelector('[aria-hidden="true"]')
+    const { getByTestId } = render(<Hero />)
+    const badge = getByTestId('hero-ring')
     expect(badge).not.toHaveStyle({ transform: expect.stringContaining('rotate') })
   })
 })
