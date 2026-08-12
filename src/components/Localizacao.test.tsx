@@ -1,7 +1,8 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { Localizacao } from './Localizacao'
-import { SITE_INFO } from '../data/content'
+import { SITE_INFO, WHATSAPP_GREETING } from '../data/content'
+import { buildWhatsAppLink } from '../lib/whatsapp'
 
 describe('Localizacao', () => {
   it('renders the real address', () => {
@@ -14,6 +15,13 @@ describe('Localizacao', () => {
     expect(screen.getByRole('link', { name: SITE_INFO.landlineDisplay })).toHaveAttribute(
       'href',
       `tel:${SITE_INFO.landlineTel}`
+    )
+  })
+
+  it('links out to WhatsApp with the shared greeting', () => {
+    render(<Localizacao />)
+    expect(screen.getByRole('link', { name: `${SITE_INFO.whatsappDisplay} (WhatsApp)` }).getAttribute('href')).toBe(
+      buildWhatsAppLink(WHATSAPP_GREETING)
     )
   })
 

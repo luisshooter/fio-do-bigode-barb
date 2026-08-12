@@ -20,6 +20,9 @@ export function Footer() {
         <a href={buildWhatsAppLink(WHATSAPP_GREETING)} target="_blank" rel="noreferrer" className="hover:text-brass">
           WhatsApp
         </a>
+        <a href={`tel:${SITE_INFO.landlineTel}`} className="hover:text-brass">
+          {SITE_INFO.landlineDisplay}
+        </a>
       </div>
       <p className="mt-4 text-xs">
         © {year} {SITE_INFO.name}. Todos os direitos reservados.

@@ -1,9 +1,31 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { NAV_LINKS, SITE_INFO, WHATSAPP_GREETING } from '../data/content'
 import { buildWhatsAppLink } from '../lib/whatsapp'
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const toggleButtonRef = useRef<HTMLButtonElement>(null)
+  const firstMobileLinkRef = useRef<HTMLAnchorElement>(null)
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false)
+    toggleButtonRef.current?.focus()
+  }
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      firstMobileLinkRef.current?.focus()
+    }
+  }, [isMobileMenuOpen])
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') closeMobileMenu()
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [isMobileMenuOpen])
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-brass/20 bg-ink/80 backdrop-blur-md">
@@ -40,11 +62,13 @@ export function Header() {
             WhatsApp
           </a>
           <button
+            ref={toggleButtonRef}
             type="button"
-            aria-label="Abrir menu"
+            aria-label={isMobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
             aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-nav"
             className="text-paper md:hidden"
-            onClick={() => setIsMobileMenuOpen((open) => !open)}
+            onClick={() => (isMobileMenuOpen ? closeMobileMenu() : setIsMobileMenuOpen(true))}
           >
             <svg aria-hidden="true" viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -55,15 +79,17 @@ export function Header() {
 
       {isMobileMenuOpen && (
         <nav
+          id="mobile-nav"
           aria-label="Navegação móvel"
           className="flex flex-col gap-4 border-t border-brass/20 bg-ink px-6 py-4 md:hidden"
         >
-          {NAV_LINKS.map((link) => (
+          {NAV_LINKS.map((link, index) => (
             <a
               key={link.href}
+              ref={index === 0 ? firstMobileLinkRef : undefined}
               href={link.href}
               className="text-sm uppercase tracking-[0.2em] text-paper hover:text-brass"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={closeMobileMenu}
             >
               {link.label}
             </a>
