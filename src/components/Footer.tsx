@@ -6,7 +6,13 @@ export function Footer() {
 
   return (
     <footer className="bg-ink px-6 py-10 text-center text-paper/70">
-      <img src="/logo-transparent.png" alt={SITE_INFO.name} className="mx-auto h-10 w-auto" />
+      <img
+        src="/logo-transparent.png"
+        alt={SITE_INFO.name}
+        className="mx-auto h-10 w-auto"
+        width={40}
+        height={41}
+      />
       <div className="mt-4 flex justify-center gap-6 text-sm">
         <a href={SITE_INFO.instagram} target="_blank" rel="noreferrer" className="hover:text-brass">
           Instagram

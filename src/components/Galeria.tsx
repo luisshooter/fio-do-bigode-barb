@@ -22,7 +22,7 @@ export function Galeria() {
               <div
                 role="img"
                 aria-label={item.alt}
-                className="flex h-full w-full items-center justify-center bg-ink/60 text-center text-xs uppercase tracking-wide text-paper/50"
+                className="flex h-full w-full items-center justify-center bg-ink/60 text-center text-xs uppercase tracking-wide text-paper/70"
               >
                 Foto em breve
               </div>

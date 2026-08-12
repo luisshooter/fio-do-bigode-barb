@@ -9,7 +9,13 @@ export function Header() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-brass/20 bg-ink/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
         <a href="#top" className="shrink-0">
-          <img src="/logo-transparent.png" alt={SITE_INFO.name} className="h-12 w-auto" />
+          <img
+            src="/logo-transparent.png"
+            alt={SITE_INFO.name}
+            className="h-12 w-auto"
+            width={48}
+            height={49}
+          />
         </a>
 
         <nav aria-label="Navegação principal" className="hidden gap-8 md:flex">

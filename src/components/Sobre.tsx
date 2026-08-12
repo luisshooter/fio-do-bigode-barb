@@ -18,7 +18,7 @@ export function Sobre() {
           <div
             role="img"
             aria-label={ABOUT_PHOTO.alt}
-            className="flex aspect-[4/5] w-full -rotate-2 items-center justify-center rounded-sm bg-paper/10 text-center text-xs uppercase tracking-wide text-paper/50 shadow-xl"
+            className="flex aspect-[4/5] w-full -rotate-2 items-center justify-center rounded-sm bg-paper/10 text-center text-xs uppercase tracking-wide text-paper/70 shadow-xl"
           >
             Foto em breve
           </div>
