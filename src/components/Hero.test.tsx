@@ -22,7 +22,7 @@ describe('Hero', () => {
     expect(cta.getAttribute('href')).toBe(buildWhatsAppLink(WHATSAPP_GREETING))
   })
 
-  it('stops the badge rotation when reduced motion is preferred', () => {
+  it('stops the decorative rings spinning when reduced motion is preferred', () => {
     window.matchMedia = vi.fn().mockImplementation((query: string) => ({
       matches: true,
       media: query,
@@ -35,7 +35,7 @@ describe('Hero', () => {
     })) as unknown as typeof window.matchMedia
 
     const { getByTestId } = render(<Hero />)
-    const badge = getByTestId('hero-ring')
-    expect(badge).not.toHaveStyle({ transform: expect.stringContaining('rotate') })
+    const ring = getByTestId('hero-ring-1')
+    expect(ring.style.animation).toBe('')
   })
 })

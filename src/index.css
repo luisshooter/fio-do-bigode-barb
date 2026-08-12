@@ -31,21 +31,29 @@ body {
     background-position: 0 0;
   }
   to {
-    background-position: 0 -60px;
+    background-position: 0 48px;
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 
 .barber-pole {
   background-image: repeating-linear-gradient(
     45deg,
-    #b3282d 0px,
-    #b3282d 10px,
-    #f2e8d5 10px,
-    #f2e8d5 20px,
-    #c9a227 20px,
-    #c9a227 30px
+    #c9a227 0px,
+    #c9a227 12px,
+    #f2e8d5 12px,
+    #f2e8d5 24px,
+    #7a1f1f 24px,
+    #7a1f1f 36px
   );
-  background-size: 100% 200%;
 }
 
 .barber-pole-spin {

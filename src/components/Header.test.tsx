@@ -38,14 +38,9 @@ describe('Header', () => {
     expect(screen.queryByLabelText('Navegação móvel')).not.toBeInTheDocument()
   })
 
-  it('starts transparent and switches to a solid background after scrolling', () => {
+  it('always renders with the solid ink background', () => {
     render(<Header />)
     const header = document.querySelector('header')
-    expect(header?.className).toContain('bg-transparent')
-
-    Object.defineProperty(window, 'scrollY', { value: 150, configurable: true })
-    fireEvent.scroll(window)
-
     expect(header?.className).toContain('bg-ink/80')
   })
 })
